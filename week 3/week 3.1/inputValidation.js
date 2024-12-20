@@ -1,16 +1,32 @@
 const express = require('express');
+const zod = require('zod');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const schema = zod.array(zod.number());
+
 app.use(express.json());
 
-app.get('/health-checkup', (req, res) => {
+app.post('/health-checkup', (req, res) => {
     const kidneys = req.body.kidneys;
-    const kidneyLength = kidneys.length;
+    const response = schema.safeParse(kidneys);
+    if (!response.success) {
+        res.status(411).json({
+            msg: "inputs are invalid"
+        })
+    } else {
+        res.send({
+            response
+        });
+    }
+})
 
-    res.send('Your kidney length is ' + kidneyLength);
+app.use((err, req, res, next) => {
+    res.json({
+        msg: 'Sorry, something is up with our server'
+    })
 })
 
 app.listen(port, () => {
-    console.log(console.log(`app is listening on ${port}`));
+    console.log((`app is listening on ${port}`));
 })
