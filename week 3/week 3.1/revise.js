@@ -28,16 +28,17 @@ const kidneyMiddleware = (req, res, next) => {
 }
 
 let numberOfRequests = 0;
-
 const calculateRequests = (req, res, next) => {
     numberOfRequests++;
     console.log(numberOfRequests);
     next();
 }
 
-app.get('/health-checkup', userMiddleware, kidneyMiddleware, calculateRequests, (req, res) => {
-    res.status(200).json({
-        msg: 'Your kidney is fine'
+app.use(calculateRequests);
+
+app.get('/health-checkup', userMiddleware, kidneyMiddleware, (req, res, next) => {
+    res.json({
+        msg: 'Your kidney is fine.'
     })
 })
 
