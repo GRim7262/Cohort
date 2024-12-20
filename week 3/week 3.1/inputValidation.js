@@ -5,6 +5,12 @@ const port = process.env.PORT || 3000;
 
 const schema = zod.array(zod.number());
 
+const schemaTwo = zod.object({
+    email: zod.string(),
+    password: zod.string(),
+    country: zod.literal('IN').or(zod.literal('US'))
+})
+
 app.use(express.json());
 
 app.post('/health-checkup', (req, res) => {
