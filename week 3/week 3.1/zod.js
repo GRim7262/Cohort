@@ -23,4 +23,3 @@ validateObjectInput({
     email: "vinal@email.com",
     password: "vinallll"
 });
-
