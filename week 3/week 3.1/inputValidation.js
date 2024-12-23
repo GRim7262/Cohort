@@ -13,6 +13,11 @@ const schemaTwo = zod.object({
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    const kidneyNumber = parseInt(req.body.kidneyNumber);
+    console.log(kidneyNumber);
+})
+
 app.post('/health-checkup', (req, res) => {
     const kidneys = req.body.kidneys;
     const response = schema.safeParse(kidneys);

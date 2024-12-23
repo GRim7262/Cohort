@@ -23,3 +23,7 @@ validateObjectInput({
     email: "vinal@email.com",
     password: "vinallll"
 });
+
+const schema = zod.string().email();
+const response = schema.parse('saasamail.com');
+console.log(response);
