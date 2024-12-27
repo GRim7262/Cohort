@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://vinalpawar1:h7kplBNX8yfXJfwA@cluster0.jquic.mongodb.net/userappnew');
+mongoose.connect('');
 
 const User = mongoose.model('Users', {
     name: String,
@@ -12,19 +12,19 @@ const User = mongoose.model('Users', {
 
 app.use(express.json());
 
-app.post('/signin', async (req, res, next) => {
+app.post('/signin', async (req, res) => {
     const name = req.body.name;
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
-    const existingUser = await User.findOne({ email: username });
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-        res.status(400).json({ msg: 'User already exists' });
+        return res.status(400).json({ msg: 'User already exists' });
     }
 
     const user = new User({
         name: name,
-        email: username,
+        email: email,
         password: password,
     });
     user.save();
