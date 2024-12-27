@@ -34,19 +34,19 @@ const userExists = (username, password) => {
     return false;
 }
 
-console.log(userExists('priya@gmail.com', '123321'))
+// console.log(userExists('priya@gmail.com', '123321'))
 
 app.post('/signin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
     if (!userExists(username, password)) {
-        res.status(403).json({
+        return res.status(403).json({
             msg: 'User doesnt exist in our in memory db',
         });
     }
 
-    let token = jwt.sign({ username: username }, "shhhhh");
+    let token = jwt.sign({ username: username }, jwtPassword);
     return res.json({
         token,
     });
@@ -58,6 +58,15 @@ app.get('/users', (req, res) => {
         const decoded = jwt.verify(token, jwtPassword);
         const username = decoded.username;
         // return a list of users other than this username
+        res.json({
+            users: ALL_USERS.filter((value) => {
+                if (value.username === username) {
+                    return false;
+                } else {
+                    return true;
+                }
+            })
+        });
 
     } catch (err) {
         return res.status(403).json({
@@ -66,4 +75,4 @@ app.get('/users', (req, res) => {
     }
 });
 
-// app.listen(3000);
+app.listen(3000);
