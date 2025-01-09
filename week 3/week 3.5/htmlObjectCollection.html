@@ -7,16 +7,21 @@
         Last name: <input type="text" name="lname" value="Duck"> <br>
         <input type="submit" value="Submit">
     </form>
+    <br>
+    <button onclick="myFunction()">Try!</button>
 
     <p id="demo"></p>
 
     <script>
-        const x = document.forms["frm1"];
+        const myFunction = () =>{
+            const x = document.forms["frm1"];
         let text = "";
         for (let i = 0; i < x.length; i++) {
             text += x.elements[i].value + "<br>";
         }
         document.getElementById("demo").innerHTML = text;
+        }
+
     </script>
 </body>
 

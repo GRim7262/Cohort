@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <div id="myDIV" style="padding: 16px; background-color: lightgray;">
+        <h3>A DIV element</h3>
+    </div>
+
+    <div id="div1">
+        <p id="p1">Lorem, ipsum dolor.</p>
+        <p id="p2">Lorem ipsum dolor sit.</p>
+    </div>
+
+    <!-- <button onclick="myFunction()">Remove heading!</button> -->
+
+    <script>
+        // const para = document.createElement("p");
+        // para.innerHTML = "This is a paragraph";
+        // document.getElementById("myDIV").appendChild(para);
+
+        const myFunction = () => {
+            const element = document.getElementById("demo");
+            element.remove();
+        }
+
+        const parent = document.getElementById("div1");
+        const child = document.getElementById("p1");
+        parent.removeChild(child);
+    </script>
+</body>
+
+</html>
