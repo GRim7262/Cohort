@@ -1,0 +1,56 @@
+<html>
+<style>
+    div {
+        border: 2px solid blue;
+        margin-bottom: 10px;
+    }
+</style>
+
+<body>
+    <!-- <div>Div one</div>
+    <p class="intro">Paragraph one</p>
+    <div>Div two</div>
+    <p class="subheading">Paragraph two</p>
+    <div>Yet another div</div>
+    <div id="myDIV" style="border: 1px solid black; padding: 8px;">
+        <h2 class="example">A Heading</h2>
+        <p class="example">A Paragraph</p>
+        <p class="example">A Paragraph</p>
+    </div>
+    <div id="demo"></div> -->
+
+    <h1>Lorem, ipsum dolor.</h1>
+    <h2>Lorem, ipsum dolor.</h2>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+
+    <div>
+        <h3>Lorem, ipsum.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+
+    <div>
+        <h2>Lorem, ipsum.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+
+    <script>
+        // const paragraphs = document.querySelectorAll("p.intro");
+        // paragraphs.forEach(paragraph => paragraph.style.backgroundColor = "red");
+
+        // const element = document.getElementById("myDIV");
+        // const list = document.querySelectorAll(".example");
+        // document.getElementById("demo").innerHTML = list.length;
+
+        const nodeList = document.querySelector("div > p");
+        nodeList.style.backgroundColor = "green";
+
+        // nodeList.forEach(i => i.style.backgroundColor = "green");
+
+        // for (let i = 0; i < nodeList.length; i++) {
+        //     nodeList[i].style.backgroundColor = "green";
+        // }
+    </script>
+</body>
+
+</html>
