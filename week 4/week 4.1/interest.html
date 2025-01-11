@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <input type="text" placeholder="Principal" id="principal"> <br> <br>
+    <input type="text" placeholder="Rate" id="rate"> <br> <br>
+    <input type="text" placeholder="Time" id="time"> <br> <br>
+    <button onclick="findInterest()">Get Interest</button> <br> <br>
+    <div id="solution"></div>
+    <script>
+        const findInterest = async () => {
+            const principalInterest = document.getElementById("principal").value;
+            const rateInterest = document.getElementById("rate").value;
+            const timeInterest = document.getElementById("time").value;
+
+            const response = await fetch("https://sum-server-9unv.onrender.com/interest?principal= "
+                + principalInterest + "&rate=" + rateInterest + "&time=" + timeInterest);
+            const ans = await response.json();
+
+            // document.getElementById("solution").innerHTML = ans;
+
+            document.getElementById("solution").innerHTML = `
+            Total amount: ${ans.total} <br> <br>
+            Interest: ${ans.interest}
+            `;
+        }
+    </script>
+</body>
+
+</html>
