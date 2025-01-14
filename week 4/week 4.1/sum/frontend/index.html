@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum & Interest</title>
+</head>
+
+<body>
+    <!-- Sum Function -->
+    <input type="text" id="firstNumber" placeholder="first number"> <br> <br>
+    <input type="text" id="secondNumber" placeholder="second number"> <br> <br>
+    <button onclick="myFunction()">Calculate Sum</button>
+    <div id="solution"></div> <br> <br>
+
+    <!-- Interest Function -->
+    <input type="text" id="principal" placeholder="principal"> <br> <br>
+    <input type="text" id="rate" placeholder="rate"> <br> <br>
+    <input type="text" id="time" placeholder="time"> <br> <br>
+    <button onclick="myInterestFunction()">Calucalte Interest</button> <br> <br>
+    <div id="interestSolution"></div>
+
+    <script>
+        // Sum function
+        const myFunction = async () => {
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+
+            const response = await fetch("http://localhost:3000/sum?a=" + a + "&&b=" + b);
+            const ans = await response.text();
+            document.getElementById("solution").innerHTML = "Sum: " + ans;
+        }
+
+        // Interest function
+        const myInterestFunction = () => {
+            const principal = document.getElementById("principal").value;
+            const rate = document.getElementById("rate").value;
+            const time = document.getElementById("time").value;
+
+            fetch("http://localhost:3000/interest?principal="
+                + principal + "&&rate=" + rate + "&&time=" + time)
+                .then((response) => {
+                    return response.json();
+                }).then((ans) => {
+                    document.getElementById("interestSolution").innerHTML = `
+                    Total: ${ans.total} <br> <br>
+                    Interest: ${ans.interest}
+                    `;
+                })
+        }
+    </script>
+</body>
+
+</html>
