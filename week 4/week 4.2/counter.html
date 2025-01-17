@@ -1,0 +1,14 @@
+<html>
+<div>
+    <button onclick="counter()" id="btn">Count</button>
+</div>
+
+<script>
+    let count = 0;
+
+    const counter = () => {
+        document.getElementById("btn").innerHTML = "count is 0" + count++;
+    }
+</script>
+
+</html>

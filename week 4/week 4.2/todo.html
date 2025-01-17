@@ -1,0 +1,44 @@
+<html>
+
+<input type="text" placeholder="Title" id="title"> <br><br>
+<input type="text" placeholder="Description" id="description"> <br><br>
+<div id="container"></div>
+
+<script>
+    const createChild = (title, description, id) => {
+        const child = document.createElement("div");
+
+        const firstGrandChildren = document.createElement("div");
+        firstGrandChildren.innerHTML = title;
+
+        const secondGrandChildren = document.createElement("div");
+        secondGrandChildren.innerHTML = description;
+
+        const thirdGrandChildren = document.createElement("button");
+        thirdGrandChildren.innerHTML = "Mark as done";
+        thirdGrandChildren.setAttribute("onclick", `markAsDone(${id})`);
+
+        child.appendChild(firstGrandChildren);
+        child.appendChild(secondGrandChildren);
+        child.appendChild(thirdGrandChildren);
+        child.setAttribute("id", id);
+        return child;
+    }
+
+    const updateDomAccToState = (state) => {
+        const parent = document.getElementById("container");
+        parent.innerHTML = "";
+        for (let i = 0; i < state.length; i++) {
+            const child = createChild(state[i].title, state[i].description, state[i].id);
+            parent.appendChild(child);
+        }
+    }
+
+    window.setInterval(async () => {
+        const res = await fetch("https://sum-server-9unv.onrender.com/todos")
+        const json = await res.json();
+        updateDomAccToState(json.todos);
+    }, 3000)
+</script>
+
+</html>
