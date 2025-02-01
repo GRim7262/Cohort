@@ -3,32 +3,41 @@ import { useState } from "react";
 
 function App() {
   const [todos, setTodos] = useState([{
-    title: "Go to gym",
-    description: "Go to gym from 7-9",
-    completed: false
+    title: "Complete React Tutorial",
+    description: "Finish the Tic-Tac-Toe game tutorial from the official React Docs."
   }, {
-    title: "Go to DSA",
-    description: "Study DSA from 9-11",
-    completed: true
+    title: "Review Node.js Concepts",
+    description: "Go over Express.js routing and middleware to strengthen understanding."
   }, {
-    title: "Go to Sleep",
-    description: "Go to sleep from 11-7",
-    completed: false
-  }]);
+    title: "Buy Groceries",
+    description: "Purchase chicken, vegetables, and other essentials for the week."
+  }
+  ]);
 
   function addTodo() {
     setTodos([...todos, {
       title: "Random todo",
       description: "Description of random todo"
     }])
+
+
+    // let newTodos = [];
+    // for (let i = 0; i < todos.length; i++) {
+    //   newTodos.push(todos[i]);
+    // }
+    // newTodos.push({
+    //   title: "Vinal",
+    //   description: "vinal pawar"
+    // })
+    // setTodos(newTodos)
   }
 
   return (
     <div>
       <button onClick={addTodo}>Add random todo</button>
 
-      {todos.map((todo, index) => {
-        return <Todo key={index} title={todo.title} description={todo.description} />
+      {todos.map((todo) => {
+        return <Todo title={todo.title} description={todo.description} />
       })}
     </div>
   )
