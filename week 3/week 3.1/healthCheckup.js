@@ -7,7 +7,7 @@ app.use(express.json());
 
 const kidneysInput = zod.literal('1').or(zod.literal('2'));
 
-app.post('/health-checkup', (req, res, next) => {
+app.post('/health-checkup', (req, res) => {
     const kidneyId = req.body.kidneyId;
     const validation = kidneysInput.safeParse(kidneyId);
     if (!validation.success) {
