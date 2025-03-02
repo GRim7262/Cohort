@@ -1,5 +1,5 @@
 export function TextComponent() {
     return (
-        <p>Hi there</p>
+        <p>Hi there from text component</p>
     )
 }
