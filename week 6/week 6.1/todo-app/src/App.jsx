@@ -11,12 +11,14 @@ function App() {
     //   .then((res) => res.json())
     //   .then((data) => setTodos(data.todos))
 
-    const fetchTodos = async () => {
-      const res = await fetch("https://sum-server-9unv.onrender.com/todos");
-      const json = await res.json();
-      setTodos(json.todos);
-    }
-    fetchTodos();
+    setInterval(() => {
+      const fetchTodos = async () => {
+        const res = await fetch("https://sum-server-9unv.onrender.com/todos");
+        const json = await res.json();
+        setTodos(json.todos);
+      }
+      fetchTodos();
+    }, 3000)
   }, [])
 
   return (
