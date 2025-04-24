@@ -1,55 +1,22 @@
-// import { useState } from "react"
-// import TodoList from "./components/TodoList"
-
-// function App() {
-
-//   const [id, setId] = useState(1);
-
-//   return (
-//     <>
-//       <button onClick={() => setId(id === 5 ? 1 : id + 1)}>Next To-Do</button>
-//       <TodoList id={id} />
-//     </>
-//   )
-// }
-
-// export default App
-
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react"
 
 function App() {
-  const [currentTodo, setCurrentTodo] = useState(1);
+  const [count, setCount] = useState(0);
+  const [inputValue, setinputValue] = useState(1);
 
-  return <div>
-    <button onClick={() => setCurrentTodo(1)}>1</button>
-    <button onClick={() => setCurrentTodo(2)}>2</button>
-    <button onClick={() => setCurrentTodo(3)}>3</button>
-    <button onClick={() => setCurrentTodo(4)}>4</button>
-    <button onClick={() => setCurrentTodo(5)}>5</button>
-    <Todo id={currentTodo} />
-  </div>
+  let counter = 0;
+  for (let i = 1; i <= inputValue; i++) {
+    counter += i;
+  }
+
+  return (
+    <>
+      <input onChange={(e) => setinputValue(e.target.value)}
+        placeholder={"Find the sum from 1 to n"} />
+      <div>Sum from 1 to {inputValue} is {counter}</div>
+      <button onClick={() => setCount(count + 1)}>Counter {count}</button>
+    </>
+  )
 }
 
-function Todo({ id }) {
-  const [todo, setTodo] = useState({});
-
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const response = await fetch(`https://sum-server-9unv.onrender.com/todo?id=${id}`);
-      const result = await response.json();
-      setTodo(result.todo);
-    }
-    fetchTodos();
-  }, [id])
-
-  return <>
-    <div key={todo.id}>
-      <h1>Title: {todo.title}</h1>
-      <h2>Description: {todo.description}</h2>
-      <h2>Completed: {todo.completed ? 'Yes✅' : 'No❌'}</h2>
-    </div>
-  </>
-}
-
-export default App;
+export default App
