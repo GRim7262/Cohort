@@ -19,19 +19,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
-
-  const [count, setCount] = useState(1);
-
-  function nextCount() {
-
-  }
+  const [currentTodo, setCurrentTodo] = useState(1);
 
   return <div>
-    <button onClick={nextCount}>1</button>
-    <button onClick={nextCount}>2</button>
-    <button onClick={nextCount}>3</button>
-    <button onClick={nextCount}>4</button>
-    <Todo id={1} />
+    <button onClick={() => setCurrentTodo(1)}>1</button>
+    <button onClick={() => setCurrentTodo(2)}>2</button>
+    <button onClick={() => setCurrentTodo(3)}>3</button>
+    <button onClick={() => setCurrentTodo(4)}>4</button>
+    <button onClick={() => setCurrentTodo(5)}>5</button>
+    <Todo id={currentTodo} />
   </div>
 }
 
@@ -40,24 +36,20 @@ function Todo({ id }) {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const response = await fetch('https://sum-server-9unv.onrender.com/todo?id=' + id);
+      const response = await fetch(`https://sum-server-9unv.onrender.com/todo?id=${id}`);
       const result = await response.json();
       setTodo(result.todo);
     }
     fetchTodos();
-  }, [])
+  }, [id])
 
-  return <div>
-    <h1>
-      Title: {todo.title}
-    </h1>
-    <h4>
-      Description: {todo.description}
-    </h4>
-    <h4>
-      Completed: {todo.completed ? 'Yes' : 'No'}
-    </h4>
-  </div>
+  return <>
+    <div key={todo.id}>
+      <h1>Title: {todo.title}</h1>
+      <h2>Description: {todo.description}</h2>
+      <h2>Completed: {todo.completed ? 'Yes✅' : 'No❌'}</h2>
+    </div>
+  </>
 }
 
 export default App;
