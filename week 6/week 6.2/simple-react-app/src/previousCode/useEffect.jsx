@@ -26,7 +26,7 @@ function Todo({ id }) {
 
     useEffect(() => {
         const fetchTodos = async () => {
-            const response = await fetch('https://sum-server-9unv.onrender.com/todo?id=' + id);
+            const response = await fetch(`https://sum-server-9unv.onrender.com/todo?id=${id}`);
             const result = await response.json();
             setTodo(result.todo);
         }
