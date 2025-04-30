@@ -1,11 +1,11 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0)
 
-  function onClick() {
+  const onClick = useCallback(() => {
     console.log("child clicked")
-  }
+  }, []);
 
   return <div>
     <Child onClick={onClick} />
