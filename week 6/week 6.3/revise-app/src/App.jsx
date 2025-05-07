@@ -1,41 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react"
 
 function App() {
-  const [exchange1Data, setExchange1Data] = useState({});
-  const [exchange2Data, setExchange2Data] = useState({});
-  const [bankData, setBankData] = useState({});
+  const [incomeTax, setIncomeTax] = useState(20000);
+  const divRef = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      setBankData({ income: 100 });
-    }, 2000)
+    setTimeout(() => divRef.current.innerHTML = '10', 5000);
   }, [])
-
-  useEffect(() => {
-    setExchange1Data({ returns: 100 });
-  }, [])
-
-  useEffect(() => {
-    setExchange2Data({ returns: 100 });
-  }, [])
-
-  const calculateCryptoReturns = () => {
-    return exchange1Data.returns + exchange2Data.returns;
-  }
-
-  const incomeTax = (calculateCryptoReturns() + bankData.income) * 0.3;
 
   return (
     <>
-      <CryptoGainsCalculator calculateCryptoReturns={calculateCryptoReturns} />
-    </>
-  )
-}
-
-const CryptoGainsCalculator = ({calculateCryptoReturns}) => {
-  return (
-    <>
-      Your crypto returns are {calculateCryptoReturns()}
+      Hi there, your income tax returns are <div ref={divRef}>{incomeTax}</div>
     </>
   )
 }
