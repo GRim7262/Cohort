@@ -1,3 +1,5 @@
+import Boldify from './Boldify'
+
 export default function Dashboard() {
     return (
         <>
@@ -20,10 +22,4 @@ export default function Dashboard() {
             </Boldify>
         </>
     )
-}
-
-function Boldify({ children }) {
-    return <b>
-        {`${children} `}
-    </b>
 }
