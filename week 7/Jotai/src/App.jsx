@@ -9,10 +9,10 @@ function App() {
   const [count] = useAtom(counterAtom);
   return (
     <>
-      {/* <h1>{count}</h1>
+      <h1>{count}</h1>
       <Counter />
       <hr />
-      < DoubleCounter /> */}
+      <h2>< DoubleCounter /></h2>
 
       <UserInfo />
     </>

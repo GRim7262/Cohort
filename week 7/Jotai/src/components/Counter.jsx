@@ -6,6 +6,7 @@ export default function Counter() {
     return (
         <>
             <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
+            {' '}
             <button onClick={() => setCount((prev) => prev - 1)}>Decrement</button>
         </>
     )
