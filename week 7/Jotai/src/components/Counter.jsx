@@ -1,8 +1,8 @@
-import { useAtom } from "jotai"
+import { useSetAtom } from "jotai"
 import { counterAtom } from "../atoms"
 
 export default function Counter() {
-    const [, setCount] = useAtom(counterAtom)
+    const setCount = useSetAtom(counterAtom)
     return (
         <>
             <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>

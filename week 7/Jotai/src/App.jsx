@@ -1,5 +1,5 @@
 import './App.css'
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 import Counter from './components/Counter'
 import { counterAtom } from './atoms';
 import DoubleCounter from './components/DoubleCounter';
@@ -7,7 +7,7 @@ import UserInfo from './components/UserInfo'
 import ShoppingCart from './components/ShoppingCart';
 
 function App() {
-  const [count] = useAtom(counterAtom);
+  const count = useAtomValue(counterAtom);
   return (
     <>
       <h1>{count}</h1>

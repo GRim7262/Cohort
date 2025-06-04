@@ -1,8 +1,8 @@
-import { useContext } from "react"
-import { countContext } from "../context"
+import { useAtomValue } from "jotai";
+import { countAtom } from "./store/atoms/count";
 
 export default function CountRenderer() {
-    const count = useContext(countContext);
+    const count = useAtomValue(countAtom);
 
     return (
         <>
