@@ -1,12 +1,27 @@
-# React + Vite
+# Recoil Concepts with Jotai 🔄➡️⚛️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains my implementation of a Recoil lecture using **Jotai** as the state management library.
 
-Currently, two official plugins are available:
+## 🎥 Original Lecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I’m following the concepts from **Week 7.2 Recoil lecture**:  
 
-## Expanding the ESLint configuration
+The logic and project structure are based on the lecture, but all state management is handled with [Jotai](https://jotai.org/) instead of Recoil.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Why Jotai Instead of Recoil?
+
+> Recoil is no longer actively maintained, so I decided to learn Jotai, a more modern and lightweight alternative that works well with React's atomic and async patterns.
+
+### 🔍 Recoil vs Jotai
+
+| Concept               | Recoil                    | Jotai                        |
+|-----------------------|---------------------------|------------------------------|
+| State unit            | Atom                      | Atom                         |
+| Derived/computed      | Selector                  | Derived Atom (`get`)         |
+| Async support         | Selectors with async      | Async atoms (Suspense-ready) |
+| Dev experience        | Requires RecoilRoot       | No special provider needed   |
+| Maintenance           | Inactive                  | Actively maintained          |
+
+---
