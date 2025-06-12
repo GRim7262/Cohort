@@ -1,10 +1,10 @@
 import { useAtomValue, useSetAtom } from "jotai"
-import { messagingAtom, totalNotificationAtom } from "../store/atoms"
+import { messagingAtom, totalNotificationDerivedAtom } from "../store/atoms"
 
 
 export default function ButtonUpdater() {
     const setMessagingAtomCount = useSetAtom(messagingAtom);
-    const totalNotificationAtomCount = useAtomValue(totalNotificationAtom);
+    const totalNotificationAtomCount = useAtomValue(totalNotificationDerivedAtom);
 
     return (
         <>
