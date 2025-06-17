@@ -19,7 +19,6 @@ export default function NavBar() {
             <button>Notifications ({data.notifications >= 100 ? "99+" : data.notifications})</button>
 
             <button>Me ({total})</button>
-            {/* <TotalButton /> */}
         </>
     )
 }
