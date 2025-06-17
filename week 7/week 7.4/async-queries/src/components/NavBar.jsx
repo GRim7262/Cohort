@@ -7,6 +7,7 @@ export default function NavBar() {
 
     if (state === 'hasError') return <h1>Error Occured: {error.message}</h1>
     if (state === 'loading') return <h1>Loading...</h1>
+    const total = data?.total ?? 0;
 
     return (
         <>
@@ -17,7 +18,8 @@ export default function NavBar() {
             <button>Messaging ({data.messaging >= 100 ? "99+" : data.messaging})</button>
             <button>Notifications ({data.notifications >= 100 ? "99+" : data.notifications})</button>
 
-            <button>Me</button>
+            <button>Me ({total})</button>
+            {/* <TotalButton /> */}
         </>
     )
 }
