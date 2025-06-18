@@ -1,5 +1,6 @@
 import { useAtomValue } from "jotai"
 import { loadableNotificationsAtom } from "../store/atoms"
+import TotalButton from "./TotalButton";
 
 export default function NavBar() {
     const notifications = useAtomValue(loadableNotificationsAtom);
@@ -19,6 +20,8 @@ export default function NavBar() {
             <button>Notifications ({data.notifications >= 100 ? "99+" : data.notifications})</button>
 
             <button>Me ({total})</button>
+            
+            {/* <TotalButton /> */}
         </>
     )
 }
