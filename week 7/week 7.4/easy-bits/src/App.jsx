@@ -1,4 +1,4 @@
-import { useAtom, useAtomValue } from "jotai"
+import { useAtomValue } from "jotai"
 import { jobsAtom, messagingAtom, networkAtom, notificationsAtom } from "./store/atoms"
 import ButtonUpdater from "./components/ButtonUpdater";
 
